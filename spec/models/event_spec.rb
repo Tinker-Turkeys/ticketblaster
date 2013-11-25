@@ -70,6 +70,7 @@ describe Event do
         expect(event).to be_valid 
       end
     end
+    
   end
 
   describe "#occurring_on" do
@@ -191,12 +192,6 @@ describe Event do
       end      
     end
 
-    context "when it is a string" do
-      it "is invalid" do
-        event.published = "some string"
-        expect(event).to be_invalid
-      end      
-    end
   end
 
   describe "#public" do
@@ -219,13 +214,6 @@ describe Event do
     context "when it is nil" do
       it "is invalid" do
         event.public = nil
-        expect(event).to be_invalid
-      end      
-    end
-
-    context "when it is a string" do
-      it "is invalid" do
-        event.public = "some string"
         expect(event).to be_invalid
       end      
     end

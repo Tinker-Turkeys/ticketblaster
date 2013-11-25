@@ -1,11 +1,32 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/manu/Development/code/ticketblaster/app/models/event.rb": [
+      "/Users/VinneyCavallo/flatiron/projects/ticketblaster/app/models/event.rb": [
         1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        26,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        26,
+        1,
+        25,
+        1,
+        null,
+        null,
+        null,
         null
       ]
     },
-    "timestamp": 1385412828
+    "timestamp": 1385415077
   }
 }
