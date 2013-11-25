@@ -1,0 +1,44 @@
+<h1>New Event</h1>
+
+<% if @event.errors.any? %>
+  <div class="error">
+    <% @event.errors.full_messages.each do |error| %>
+      <%= content_tag :div, error %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_for @event do |f| %>
+  
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :occurring_on %>
+  <%= f.date_field :occurring_on %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>
+
+  <%= f.label :slots %>
+  <%= f.text_field :slots %>
+
+  <%= f.label :published %>
+  <%= f.check_box :published %>
+
+  <%= f.label :public %>
+  <%= label_tag do %>
+    <%= f.radio_button :public, "1" %> Public
+  <% end %>
+  <%= label_tag do %>
+    <%= f.radio_button :public, "0" %> Private
+  <% end %>
+
+  <%= f.submit %>
+
+<% end %>

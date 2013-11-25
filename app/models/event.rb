@@ -13,9 +13,11 @@ class Event < ActiveRecord::Base
   private
 
   def legal_date_range
-    if self.occurring_on < Time.now
+    if self.occurring_on.nil?
+      errors[:occurring_on] << "You must define an event date"
+    elsif Time.now > self.occurring_on
       errors[:occurring_on] << "Date must be in the future"
-    elsif self.occurring_on > 365.days.from_now
+    elsif 365.days.from_now < self.occurring_on 
       errors[:occurring_on] << "Event date must be within a year from now"
     end
   end
