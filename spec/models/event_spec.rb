@@ -233,31 +233,28 @@ describe Event do
     context "when it includes an invalid custom form field" do
 
       it "does raise an error" do
-        event.custom_fields_json = "(label: 'main course')"
-        expect{JSON.load(event.custom_fields_json)}.to raise_error{JSON::ParserError}
+        expect do 
+          event.custom_fields_json = "(label: 'main course')"
+        end
+        .to raise_error{JSON::ParserError}
       end
     end
 
   end
 
   describe "#custom_fields" do
-    # event.add_custom_fields({ label: "Dish", type: "text_field",
-    #     value: "enter dish here", options: "" })
-    # find custom field from DB
 
     it "returns an array of custom fields" do
       expect(event.custom_fields.first).to be_a(CustomField)  
     end
+  end
 
-    # add a new custom field - see if it adds
-
+  describe "#add_custom_fields" do
+    it "returns an added custom field" do
+      event.add_custom_fields([{ label: "Alcohol", type: "text_field",
+                value: "enter drinks here", options: ""}])
+      expect(event.custom_fields.last.label).to eq("Alcohol")
+    end
   end
 
 end
-
-
-
-
-
-
-

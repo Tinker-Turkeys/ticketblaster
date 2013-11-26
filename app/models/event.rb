@@ -14,16 +14,20 @@ class Event < ActiveRecord::Base
   validates :published, inclusion: { in: [true, false] }
   validates :public, inclusion: { in: [true, false] }
 
-  before_save :serialize_custom_fields
   after_initialize :set_default
-  after_initialize :deserialize_custom_fields
 
   def add_custom_fields(custom_fields_hash)
     if custom_fields_hash
       custom_fields_hash.each do |custom_field|
         @custom_fields << CustomField.new(custom_field)
       end
+      serialize_custom_fields
     end
+  end
+
+  def custom_fields_json=(custom_fields)
+    write_attribute(:custom_fields_json, custom_fields)
+    deserialize_custom_fields
   end
 
   private

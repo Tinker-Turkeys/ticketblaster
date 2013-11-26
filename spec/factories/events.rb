@@ -11,7 +11,7 @@ FactoryGirl.define do
       slots 10
       published true
       public true
-      custom_fields_json ([{label: "Dish", type: "text_field",
+      custom_fields_json ([{ label: "Dish", type: "text_field",
         value: "enter dish here", options: "" }].to_json)
     end
   end
