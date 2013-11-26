@@ -1,5 +1,7 @@
 class Event < ActiveRecord::Base
 
+  has_many :registrations
+  
   attr_accessor :custom_fields
 
 

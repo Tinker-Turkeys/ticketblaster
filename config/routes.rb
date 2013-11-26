@@ -1,5 +1,6 @@
 Ticketblaster::Application.routes.draw do
 
+  resources :registrations, only: [:new, :create, :show]
   resources :events, only: [:new, :create, :index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
