@@ -1,6 +1,6 @@
 Ticketblaster::Application.routes.draw do
 
-  resources :events, only: [:new, :create, :index, :show] do
+  resources :events do
     resources :registrations, only: [:new, :create, :show]
   end
 

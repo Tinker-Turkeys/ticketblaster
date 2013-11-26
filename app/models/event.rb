@@ -30,6 +30,10 @@ class Event < ActiveRecord::Base
     deserialize_custom_fields
   end
 
+  def expired?
+    self.occurring_on < Time.now
+  end
+
   private
 
     def legal_date_range

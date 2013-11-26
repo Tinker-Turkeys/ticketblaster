@@ -1,4 +1,20 @@
-<h1>This event</h1>
+<h1><%= @event.title %></h1>
+<div class="published"><%= @event.published %></div>
+<div class="occurring_on"><%= @event.occurring_on %></div>
+<div class="location"><%= @event.location %></div>
+<div class="description"><%= @event.description %></div>
+
+<div class="image"><%= tag :img, src: @event.image_url %></div>
+<div class="slots"><%= @event.slots %></div>
+<div class="public"><%= @event.public %></div>
+
+<div class="custom_fields">
+  <%= @event.custom_fields %>
+</div>
 
 
+<div class="created_at"><%= @event.created_at %></div>
+<div class="updated_at"><%= @event.updated_at %></div>
 
+<div class="controls"><%= link_to "Edit event", edit_event_path(@event) %>
+  <%= link_to "Cancel event", event_path(@event), method: :delete %>
