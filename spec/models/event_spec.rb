@@ -220,9 +220,44 @@ describe Event do
 
   end
 
-  describe "#form_fields" do
-    it { should respond_to(:form_fields) }
-    it "has form field information"
+  describe "#custom_fields_json" do
+    it { should respond_to(:custom_fields_json) }
+
+    context "when it includes a valid custom form field" do
+
+      it "dosen't raise an error" do
+        expect{JSON.load(event.custom_fields_json)}.to_not raise_error{JSON::ParserError} 
+      end
+    end
+
+    context "when it includes an invalid custom form field" do
+
+      it "does raise an error" do
+        event.custom_fields_json = "(label: 'main course')"
+        expect{JSON.load(event.custom_fields_json)}.to raise_error{JSON::ParserError}
+      end
+    end
+
+  end
+
+  describe "#custom_fields" do
+    # event.add_custom_fields({ label: "Dish", type: "text_field",
+    #     value: "enter dish here", options: "" })
+    # find custom field from DB
+
+    it "returns an array of custom fields" do
+      expect(event.custom_fields.first).to be_a(CustomField)  
+    end
+
+    # add a new custom field - see if it adds
+
   end
 
 end
+
+
+
+
+
+
+

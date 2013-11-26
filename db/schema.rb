@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20131126015539) do
     t.integer  "slots"
     t.boolean  "published"
     t.boolean  "public"
-    t.text     "form_fields"
+    t.text     "custom_fields_json"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

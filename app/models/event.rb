@@ -43,12 +43,12 @@ class Event < ActiveRecord::Base
     end
 
     def serialize_custom_fields
-      self.form_fields = self.custom_fields.map { |p| p.instance_values }.to_json
+      self.custom_fields_json = self.custom_fields.map { |p| p.instance_values }.to_json
     end
 
     def deserialize_custom_fields
-      if self.persisted?
-        custom_fields_array = JSON.parse(self.form_fields, symbolize_names: true)
+      unless self.custom_fields_json.nil?
+        custom_fields_array = JSON.parse(self.custom_fields_json, symbolize_names: true)
         self.custom_fields = custom_fields_array.map { |c| CustomField.new(c) }
       end
     end

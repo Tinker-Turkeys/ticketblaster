@@ -9,7 +9,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :slots
       t.boolean :published
       t.boolean :public
-      t.text :form_fields
+      t.text :custom_fields_json
 
       t.timestamps
     end
