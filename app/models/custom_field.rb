@@ -6,8 +6,7 @@ class CustomField
     self.label = attributes[:label]
     @type = attributes[:type]
     @value = attributes[:value]
-
-    @options = attributes[:options] 
+    @options = attributes[:options]
   end
 
   def label=(label)
@@ -18,15 +17,19 @@ class CustomField
   end
 
   def id_attr
-    "custom_fields_#{self.name}"
+    "registration_custom_fields_#{self.name}"
   end  
 
   def name_attr
-    "custom_fields[#{self.name}]"
+    "registration[custom_fields][#{self.name}]#{ multi_value? ? '[]' : '' }"
   end
 
   def options_list
     self.options.strip.split(/\W*,\W*/)
+  end
+
+  def multi_value?
+    self.type == "check_box"
   end
 
 end

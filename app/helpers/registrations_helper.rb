@@ -23,34 +23,18 @@ module RegistrationsHelper
     label_tag(nil, custom_field.label) +
     custom_field.options_list.map do |option|
       label_tag nil do
-        radio_button_tag(custom_field.name_attr, option) + 
-          option
+        radio_button_tag(custom_field.name_attr, option, 
+          option == value) + 
+        option
       end
     end.join("").html_safe
   end
 
   def custom_check_box_tag(custom_field, value)
-    if custom_field.options_list.any?
-      custom_multi_item_checkbox(custom_field, value)
-    else
-      custom_single_item_checkbox(custom_field, value)
-    end
-  end
-
-  def custom_single_item_checkbox(custom_field, value)
-    label_tag(nil, custom_field.label) +
-    label_tag(custom_field.name_attr) do
-      check_box_tag(custom_field.name_attr, custom_field.value, 
-        custom_field.value == value) + 
-      custom_field.value
-    end
-  end
-
-  def custom_multi_item_checkbox(custom_field, value)
     label_tag(nil, custom_field.label) +
     custom_field.options_list.map do |option|
       label_tag nil do
-        check_box_tag(custom_field.name_attr, option) + 
+        check_box_tag(custom_field.name_attr, option, value.include?(option)) + 
           option
       end
     end.join("").html_safe
