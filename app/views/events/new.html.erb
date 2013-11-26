@@ -33,10 +33,10 @@
 
   <%= f.label :public %>
   <%= label_tag do %>
-    <%= f.radio_button :public, "1" %> Public
+    <%= f.radio_button :public, true %> Public
   <% end %>
   <%= label_tag do %>
-    <%= f.radio_button :public, "0" %> Private
+    <%= f.radio_button :public, false %> Private
   <% end %>
 
   <% @event.custom_fields.each do |custom_field| %>
