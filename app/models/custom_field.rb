@@ -6,6 +6,7 @@ class CustomField
     self.label = attributes[:label]
     @type = attributes[:type]
     @value = attributes[:value]
+
     @options = attributes[:options] 
   end
 
@@ -14,6 +15,18 @@ class CustomField
       @name = label.downcase.gsub(/[^a-z0-9 ]/i,'').strip.gsub(/\W+/,'-')
     end
     @label = label
+  end
+
+  def id_attr
+    "custom_fields_#{self.name}"
+  end  
+
+  def name_attr
+    "custom_fields[#{self.name}]"
+  end
+
+  def select_options
+    self.options.strip.split(/\W*,\W*/)
   end
 
 end

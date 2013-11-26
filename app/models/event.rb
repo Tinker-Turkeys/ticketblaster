@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   validates :published, inclusion: { in: [true, false] }
   validates :public, inclusion: { in: [true, false] }
 
-  after_initialize :set_default
+  after_initialize :set_default, :deserialize_custom_fields
 
   def add_custom_fields(custom_fields_hash)
     if custom_fields_hash
