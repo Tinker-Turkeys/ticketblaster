@@ -5,6 +5,9 @@ class RegistrationsController < ApplicationController
   end
 
   def create
+    @event = Event.find(params[:event_id])
+    @registration = @event.registrations.build(params[:registration])
+    render "new"
   end
 
   def show

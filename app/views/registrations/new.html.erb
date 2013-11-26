@@ -2,7 +2,9 @@
 
 <%= form_for [@event, @registration] do |f| %>
   <% @event.custom_fields.each do |field| %>
-    <%= custom_field_tag(field) %>
+  <% value = "yes" %>
+    <%= custom_field_tag(field, value) %>
   <% end %>
+  <%= f.submit "RSVP" %>
 <% end %>
 
