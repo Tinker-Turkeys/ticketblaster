@@ -1,81 +1,19 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/VinneyCavallo/flatiron/projects/ticketblaster/app/controllers/events_controller.rb": [
+      "/Users/manu/Development/code/ticketblaster/app/models/custom_field.rb": [
         1,
-        1,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        0,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        null,
-        null,
-        1,
-        null,
         null,
         1,
         null,
         1,
         1,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/VinneyCavallo/flatiron/projects/ticketblaster/app/controllers/application_controller.rb": [
         1,
-        null,
-        null,
-        1,
-        null,
-        null
-      ],
-      "/Users/VinneyCavallo/flatiron/projects/ticketblaster/app/models/event.rb": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        null,
-        1,
-        1,
-        0,
-        1,
-        0,
-        1,
-        0,
-        null,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1385420066
+    "timestamp": 1385421727
   }
 }

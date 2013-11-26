@@ -39,6 +39,12 @@
     <%= f.radio_button :public, "0" %> Private
   <% end %>
 
+  <% @event.custom_fields.each do |custom_field| %>
+    <%= render partial: "custom_field", locals: { custom_field: custom_field } %>
+  <% end %>
+
+  <%= submit_tag :add_custom_field %>
+
   <%= f.submit %>
 
 <% end %>
