@@ -25,7 +25,7 @@ class CustomField
     "custom_fields[#{self.name}]"
   end
 
-  def select_options
+  def options_list
     self.options.strip.split(/\W*,\W*/)
   end
 
