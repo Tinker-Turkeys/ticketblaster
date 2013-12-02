@@ -30,6 +30,7 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event.add_custom_fields(event_params[:custom_fields])
     if @event.update(event_params)
       redirect_to @event, notice: "Event updated"
     else
@@ -56,7 +57,7 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:title, :description, :occurring_on, 
         :location, :image_url, :slots, :published, :public, 
-        :custom_fields => [:label, :type, :name, :value, :options])
+        :custom_fields => [:label, :type, :name, :value, :options, :ignore])
     end
 
 end

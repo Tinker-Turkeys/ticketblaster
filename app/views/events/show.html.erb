@@ -25,5 +25,7 @@
 <div class="created_at"><%= @event.created_at %></div>
 <div class="updated_at"><%= @event.updated_at %></div>
 
-<div class="controls"><%= link_to "Edit event", edit_event_path(@event) %>
+<div class="controls">
+  <%= link_to "Edit event", edit_event_path(@event) %>
   <%= link_to "Cancel event", event_path(@event), method: :delete %>
+</div>

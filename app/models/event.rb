@@ -17,9 +17,12 @@ class Event < ActiveRecord::Base
   after_initialize :set_default, :deserialize_custom_fields
 
   def add_custom_fields(custom_fields_hash)
+    @custom_fields = []
     if custom_fields_hash
       custom_fields_hash.each do |custom_field|
-        @custom_fields << CustomField.new(custom_field)
+        unless custom_field[:ignore]
+          @custom_fields << CustomField.new(custom_field)
+        end
       end
       serialize_custom_fields
     end

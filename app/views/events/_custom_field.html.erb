@@ -9,3 +9,8 @@
 
 <%= label_tag "event_custom_fields_options", "Options" %>
 <%= text_field_tag "event[custom_fields][][options]", custom_field.options %>
+
+<%= label_tag nil do %>
+  <%= check_box_tag "event[custom_fields][][ignore]", true %>
+  Delete
+<% end %>
