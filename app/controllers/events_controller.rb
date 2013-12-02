@@ -31,7 +31,11 @@ class EventsController < ApplicationController
 
   def update
     @event.add_custom_fields(event_params[:custom_fields])
-    if @event.update(event_params)
+
+    if params[:commit] == 'add_custom_field'
+      @event.custom_fields << CustomField.new
+      render :edit
+    elsif @event.update(event_params)
       redirect_to @event, notice: "Event updated"
     else
       flash.now[:error] = "Event not updated"

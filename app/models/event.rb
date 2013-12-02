@@ -20,7 +20,7 @@ class Event < ActiveRecord::Base
     @custom_fields = []
     if custom_fields_hash
       custom_fields_hash.each do |custom_field|
-        unless custom_field[:ignore]
+        unless custom_field[:ignore] || custom_field[:label].blank?
           @custom_fields << CustomField.new(custom_field)
         end
       end
