@@ -37,6 +37,10 @@ class Event < ActiveRecord::Base
     self.occurring_on < Time.now
   end
 
+  def cancel!
+    self.update(canceled: true)
+  end
+
   private
 
     def legal_date_range

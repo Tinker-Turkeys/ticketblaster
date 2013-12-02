@@ -1,4 +1,9 @@
 <h1><%= @event.title %></h1>
+
+<% if @event.canceled? %>
+  <p class="alert alert-danger">This event has been canceled.</p>
+<% end %>
+
 <div class="published"><%= @event.published %></div>
 <div class="occurring_on"><%= @event.occurring_on %></div>
 <div class="location"><%= @event.location %></div>

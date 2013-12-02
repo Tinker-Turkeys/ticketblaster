@@ -47,7 +47,7 @@ class EventsController < ApplicationController
     if @event.expired? || @event.registrations.any?
       redirect_to @event, alert: "You cannot cancel this event"
     else
-      @event.destroy
+      @event.cancel!
       redirect_to events_path, notice: "Your event has been cancelled"
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126015539) do
+ActiveRecord::Schema.define(version: 20131202150449) do
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(version: 20131126015539) do
     t.integer  "slots"
     t.boolean  "published"
     t.boolean  "public"
-    t.text     "form_fields"
+    t.text     "custom_fields_json"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "canceled",           default: false
   end
 
   create_table "registrations", force: true do |t|
