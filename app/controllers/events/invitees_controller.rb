@@ -1,4 +1,4 @@
-class InviteesController < ApplicationController
+class Events::InviteesController < ApplicationController
 
   before_action :set_event
   before_action :set_invitee, only: [:update, :destroy]
