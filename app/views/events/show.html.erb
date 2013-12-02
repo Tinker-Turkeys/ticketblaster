@@ -8,10 +8,19 @@
 <div class="slots"><%= @event.slots %></div>
 <div class="public"><%= @event.public %></div>
 
-<div class="custom_fields">
-  <%= @event.custom_fields %>
-</div>
+<% if @event.custom_fields.any? %>
+  <div class="custom_fields">
+    <table>
+      <% @event.custom_fields.each do |custom_field| %>
+        <tr>
+          <td><%= custom_field.label %></td>
+          <td><%= custom_field.explanation %></td>
+        </tr>
 
+      <% end %>
+    </table>
+  </div>
+<% end %>
 
 <div class="created_at"><%= @event.created_at %></div>
 <div class="updated_at"><%= @event.updated_at %></div>

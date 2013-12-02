@@ -32,4 +32,16 @@ class CustomField
     self.type == "check_box"
   end
 
+  def explanation
+    if self.options[1]
+      "One #{ multi_value? ? 'or more' : '' } of these options: #{self.options}"
+    elsif self.type == 'text_field'
+      "Free form response"
+    elsif multi_value?
+      "Confirmation"
+    else 
+      "Don't know"
+    end
+  end
+
 end
