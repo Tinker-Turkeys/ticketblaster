@@ -1,7 +1,7 @@
 class Events::InviteesController < ApplicationController
 
   before_action :set_event
-  before_action :set_invitee, only: [:update, :destroy]
+  before_action :set_invitee, only: [:edit, :update, :destroy]
 
   def create
     @invitee = @event.invitees.build(invitee_params)
@@ -11,6 +11,10 @@ class Events::InviteesController < ApplicationController
     else
       render 'events/show'
     end
+  end
+
+  def edit
+    render 'events/show'
   end
 
   def update
@@ -42,7 +46,7 @@ class Events::InviteesController < ApplicationController
     end
 
     def set_invitee
-      @invitee = @event.invitee.find(params[:id])
+      @invitee = @event.invitees.find(params[:id])
     end
 
 end

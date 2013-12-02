@@ -1,7 +1,11 @@
 <% if @event.invitees.persisted.any? %>
   <ul>
     <% @event.invitees.each do |invitee| %>
-      <%= content_tag :li, invitee.name %>
+      <% next unless invitee.id %>
+      <li>
+        <%= invitee.name %>
+        <%= link_to 'Edit', edit_event_invitee_path(@event, invitee) %>
+      </li>
     <% end %>
   </ul>
 <% end %>
