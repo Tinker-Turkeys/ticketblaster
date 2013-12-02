@@ -8,12 +8,14 @@ class Event < ActiveRecord::Base
 
   validates :title, length: { minimum: 3 }
   validates :description, length: { minimum: 25, maximum: 10**6 }
-  validate :legal_date_range
   validates :location, length: { minimum: 3 }
   validates :slots, numericality: { greater_than: 0 }, 
                     :if => Proc.new {|e| e.slots != -1}
   validates :published, inclusion: { in: [true, false] }
   validates :public, inclusion: { in: [true, false] }
+  
+  validate :proper_custom_fields
+  validate :legal_date_range
 
   after_initialize :set_default, :deserialize_custom_fields
   after_create :generate_registrations
@@ -45,6 +47,14 @@ class Event < ActiveRecord::Base
 
 
   private
+
+    def proper_custom_fields
+      self.custom_fields.each do |custom_field|
+        unless custom_field.valid?
+          errors[:base] << custom_field.errors.full_messages.first
+        end
+      end
+    end
 
     def generate_registrations
       self.slots.times do
