@@ -1,7 +1,8 @@
 class Event < ActiveRecord::Base
 
   has_many :registrations
-  
+  has_many :invitees
+
   attr_accessor :custom_fields
 
 
@@ -40,6 +41,7 @@ class Event < ActiveRecord::Base
   def cancel!
     self.update(canceled: true)
   end
+
 
   private
 

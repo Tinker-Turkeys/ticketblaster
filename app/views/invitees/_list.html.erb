@@ -1,0 +1,7 @@
+<% if @event.invitees.persisted.any? %>
+  <ul>
+    <% @event.invitees.each do |invitee| %>
+      <%= content_tag :li, invitee.name %>
+    <% end %>
+  </ul>
+<% end %>

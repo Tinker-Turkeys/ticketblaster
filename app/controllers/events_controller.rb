@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @invitee = @event.invitees.build
   end
 
   def new

@@ -36,3 +36,8 @@
     <%= link_to "Cancel event", event_path(@event), method: :delete %>
   <% end %>
 </div>
+
+<div class="invitee-section">
+  <%= render 'invitees/list' %>
+  <%= render 'invitees/form' %>
+</div>  
