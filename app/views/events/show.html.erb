@@ -32,5 +32,7 @@
 
 <div class="controls">
   <%= link_to "Edit event", edit_event_path(@event) %>
-  <%= link_to "Cancel event", event_path(@event), method: :delete %>
+  <% unless @event.canceled? %>
+    <%= link_to "Cancel event", event_path(@event), method: :delete %>
+  <% end %>
 </div>
