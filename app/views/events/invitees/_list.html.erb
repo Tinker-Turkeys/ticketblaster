@@ -5,6 +5,9 @@
       <li>
         <%= invitee.name %>
         <%= link_to 'Edit', edit_event_invitee_path(@event, invitee) %>
+        <%= link_to 'Remove', event_invitee_path(@event, invitee), 
+          method: :delete, 
+          confirm: "Do you want to uninvite #{invitee.name}?" %>
       </li>
     <% end %>
   </ul>
