@@ -1,0 +1,18 @@
+Hi <%= @name %>,
+
+You have been invited to an event.
+
+<%= @event.title %>
+<%= '=' * @event.title.length %>
+
+Date: <%= @event.occurring_on %>
+Location: <%= @event.location %>
+
+<%= word_wrap(@event.description, line_width: 60) %>
+
+
+RSVP now at: <%= new_event_registration_url(@event) %>
+
+
+Thanks,
+Your <%= COMPANY_NAME %> Team

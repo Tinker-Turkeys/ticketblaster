@@ -6,6 +6,12 @@ class Events::InviteesController < ApplicationController
   def create
     @invitee = @event.invitees.build(invitee_params)
     if @invitee.save
+      
+      unless @invitee.email.blank?
+        EmailInvitationWorker.perform_async(
+          @invitee.name, @invitee.email, @event.id)
+      end
+
       redirect_to @event, 
         notice: "#{@invitee.name} was added to the guest list."
     else
