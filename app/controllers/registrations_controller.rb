@@ -1,19 +1,35 @@
 class RegistrationsController < ApplicationController
+
+  before_action :set_event
+  before_action :set_registration, only: [:show]
+
   def new
-    @event = Event.find(params[:event_id])
     @registration = @event.registrations.build
   end
 
   def create
-    @event = Event.find(params[:event_id])
     @registration = @event.registrations.build(registration_params)
-    render "new"
+    if @registration.save
+      redirect_to event_registration_url(@event, @registration),
+        notice: "You have successfully RSVP'd!"
+    else
+      render "new"
+    end
   end
 
   def show
+    render text: @registration.inspect
   end
 
   private
+
+    def set_event
+      @event = Event.find(params[:event_id])
+    end
+
+    def set_registration
+      @registration = @event.registrations.find(params[:event_id])
+    end
 
     def registration_params
       params.require(:registration)

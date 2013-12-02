@@ -5,6 +5,9 @@
 <% end %>
 
 <div class="published"><%= @event.published %></div>
+<div class="registration-count">
+  <%= pluralize @event.registrations.count, 'registration' %>
+</div>
 <div class="occurring_on"><%= @event.occurring_on %></div>
 <div class="location"><%= @event.location %></div>
 <div class="description"><%= @event.description %></div>
