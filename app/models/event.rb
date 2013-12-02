@@ -16,6 +16,7 @@ class Event < ActiveRecord::Base
   validates :public, inclusion: { in: [true, false] }
 
   after_initialize :set_default, :deserialize_custom_fields
+  after_create :generate_registrations
 
   def add_custom_fields(custom_fields_hash)
     @custom_fields = []
@@ -44,6 +45,12 @@ class Event < ActiveRecord::Base
 
 
   private
+
+    def generate_registrations
+      self.slots.times do
+        self.registrations.create
+      end
+    end
 
     def legal_date_range
       if self.occurring_on.nil?

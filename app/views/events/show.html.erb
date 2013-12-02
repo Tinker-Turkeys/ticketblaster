@@ -5,8 +5,13 @@
 <% end %>
 
 <div class="published"><%= @event.published %></div>
+
+<div class="remaining-slot-count">
+  <%= pluralize @event.registrations.remaining.count, 'space' %> available
+</div>
+
 <div class="registration-count">
-  <%= pluralize @event.registrations.count, 'registration' %>
+  <%= pluralize @event.registrations.finalized.count, 'registration' %>
 </div>
 <div class="occurring_on"><%= @event.occurring_on %></div>
 <div class="location"><%= @event.location %></div>

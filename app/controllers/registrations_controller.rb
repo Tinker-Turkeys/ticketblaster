@@ -5,11 +5,20 @@ class RegistrationsController < ApplicationController
 
   def new
     @registration = @event.registrations.build
+    @token = Registration.next_registration_token(@event)
   end
 
   def create
-    @registration = @event.registrations.build(registration_params)
-    if @registration.save
+    @registration = Registration.update_by_token(params[:token], 
+      registration_params)
+
+    if @registration.nil?
+      @registration = @event.registrations.build(registration_params)
+      @token = Registration.next_registration_token(@event)
+      flash.now[:notice] = 
+        "Sorry, there are no spots available. Please try again in a few minutes"
+      render "new"
+    elsif @registration.save
       redirect_to event_registration_url(@event, @registration),
         notice: "You have successfully RSVP'd!"
     else
@@ -18,7 +27,6 @@ class RegistrationsController < ApplicationController
   end
 
   def show
-    render text: @registration.inspect
   end
 
   private
@@ -28,12 +36,13 @@ class RegistrationsController < ApplicationController
     end
 
     def set_registration
-      @registration = @event.registrations.find(params[:event_id])
+      @registration = @event.registrations.find(params[:id])
     end
 
     def registration_params
       params.require(:registration)
-        .permit(custom_fields: custom_field_params(@event.custom_fields))
+        .permit(:token, :name, :phone_number, :email, 
+          custom_fields: custom_field_params(@event.custom_fields))
     end
 
     def custom_field_params(custom_fields)

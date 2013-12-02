@@ -1,6 +1,17 @@
 <h1>Registrations#new</h1>
 
 <%= form_for [@event, @registration] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %>
+
+  <%= hidden_field_tag :token, @token %>
+
   <% @event.custom_fields.each do |field| %>
     <%= custom_field_tag(field, @registration.custom_field_value(field.name)) %>
   <% end %>
