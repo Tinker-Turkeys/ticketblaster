@@ -6,10 +6,15 @@ class Events::InviteesController < ApplicationController
   def create
     @invitee = @event.invitees.build(invitee_params)
     if @invitee.save
-      
+
       unless @invitee.email.blank?
         EmailInvitationWorker.perform_async(
           @invitee.name, @invitee.email, @event.id)
+      end
+
+      unless @invitee.phone_number.blank?
+        TextMessage.new(@invitee.phone_number).invitation(@event.title, 
+          new_event_registration_url(@event)).deliver
       end
 
       redirect_to @event, 
