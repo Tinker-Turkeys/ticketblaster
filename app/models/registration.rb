@@ -26,7 +26,6 @@ class Registration < ActiveRecord::Base
     write_attribute(:phone_number, normalize_phone_number(phone_number))
   end
 
-          
   def self.next_registration_token(event)
     token = generate_token
     Registration.transaction do
@@ -51,6 +50,24 @@ class Registration < ActiveRecord::Base
     registration
   end
 
+  def labeled_data(options = {})
+    event.custom_fields.map do |cf| 
+      value = custom_field_value(cf.name)
+      if value.is_a?(Array) && options[:arrays_to_strings] 
+        value = value.join(", ")
+      end
+      [cf.label, value]
+    end
+  end
+
+  def to_a(options = {})
+    [
+      ["Name", self.name], 
+      ["Email", self.email], 
+      ["Phone Number", self.phone_number]
+    ] + self.labeled_data(options)
+  end
+
   private
 
     def serialize_custom_fields
@@ -59,7 +76,7 @@ class Registration < ActiveRecord::Base
 
     def deserialize_custom_fields
       unless self.custom_fields_json.nil?
-        self.custom_fields = JSON.parse(self.custom_fields_json, symbolize_names: true)
+        self.custom_fields = JSON.parse(self.custom_fields_json)
       end
     end
 

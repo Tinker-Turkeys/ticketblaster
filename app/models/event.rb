@@ -5,7 +5,6 @@ class Event < ActiveRecord::Base
 
   attr_accessor :custom_fields
 
-
   validates :title, length: { minimum: 3 }
   validates :description, length: { minimum: 25, maximum: 10**6 }
   validates :location, length: { minimum: 3 }
@@ -44,7 +43,6 @@ class Event < ActiveRecord::Base
   def cancel!
     self.update(canceled: true)
   end
-
 
   private
 

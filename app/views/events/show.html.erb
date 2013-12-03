@@ -48,4 +48,22 @@
 <div class="invitee-section">
   <%= render 'events/invitees/list' %>
   <%= render 'events/invitees/form' %>
-</div>  
+</div>
+
+<div class="registrations-section">
+  <% @finalized_registrations.each do |registration| %>
+    <% registration_data = registration.to_a(:arrays_to_strings => true) %>
+    <table>
+      <tr>
+        <th>Label</th>
+        <th>Response</th>
+      </tr>
+      <% registration_data.each do |cf| %>
+        <tr>
+          <td><%= cf[0] %></td>
+          <td><%= cf[1] %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

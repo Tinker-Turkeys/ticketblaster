@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   def show
     @invitee = @event.invitees.build
+    @finalized_registrations = @event.registrations.where(finalized: true)
   end
 
   def new
