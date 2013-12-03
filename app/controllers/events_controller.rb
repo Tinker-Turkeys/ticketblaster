@@ -22,7 +22,6 @@ class EventsController < ApplicationController
       @event.custom_fields << CustomField.new
       render :new
     elsif @event.save
-    raise
       redirect_to @event, notice: "Successfully created event"
     else
       render :new

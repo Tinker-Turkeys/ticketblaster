@@ -1,5 +1,8 @@
 Ticketblaster::Application.routes.draw do
 
+  root 'static_pages#index'
+
+  resources :users
 
   resources :events do
     resources :invitees, only: [:create, :edit, :update, :destroy], 
@@ -7,7 +10,11 @@ Ticketblaster::Application.routes.draw do
     resources :registrations, only: [:new, :create, :show]
   end
 
+  get '/auth/twitter/callback' => 'sessions#create'
+  get '/auth/twitter', :as => 'twitter_login'
 
+  get '/auth/facebook/callback' => 'sessions#create'
+  get '/auth/facebook', :as => 'facebook_login'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

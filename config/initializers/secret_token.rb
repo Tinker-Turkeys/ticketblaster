@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Ticketblaster::Application.config.secret_key_base = '232a08d15ccffe727a99e2e58650a2b207fb6144caba008675480346b64104bd7c25561498b00c97e8eea9893911306b0a6523c839667cc662d5bb4bb6a423e9'
+Ticketblaster::Application.config.secret_key_base = ENV['RAILS_SECRET_TOKEN']

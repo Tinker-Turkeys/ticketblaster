@@ -8,10 +8,13 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-
 gem 'twilio-ruby'
 gem 'sidekiq'
 gem 'figaro'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'puma'
 
 group :doc do  
   gem 'sdoc', require: false
