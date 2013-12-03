@@ -44,7 +44,7 @@ class CustomField
   end
 
   def explanation
-    if self.options[1]
+    if self.options && self.options[1]
       "One #{ multi_value? ? 'or more' : '' } of these options: #{self.options}"
     elsif self.type == 'text_field'
       "Free form response"
