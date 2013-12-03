@@ -5,13 +5,18 @@ class Registration < ActiveRecord::Base
 
   #validates :price, numericality: { greater_than_or_equal_to: 0 }
 
-  attr_accessor :custom_fields
+  attr_reader :custom_fields
 
-  scope :remaining, where(finalized: false)
-  scope :finalized, where(finalized: true)
+  scope :remaining, -> { where(finalized: false) }
+  scope :finalized, -> { where(finalized: true) }
 
-  after_initialize :set_default
+  after_initialize :set_default, :deserialize_custom_fields
   before_save :match_to_invitation
+
+  def custom_fields=(custom_fields)
+    @custom_fields = custom_fields
+    serialize_custom_fields
+  end
 
   def custom_field_value(name)
     self.custom_fields[name]
@@ -47,6 +52,16 @@ class Registration < ActiveRecord::Base
   end
 
   private
+
+    def serialize_custom_fields
+      self.custom_fields_json = self.custom_fields.to_json 
+    end
+
+    def deserialize_custom_fields
+      unless self.custom_fields_json.nil?
+        self.custom_fields = JSON.parse(self.custom_fields_json, symbolize_names: true)
+      end
+    end
 
     def self.generate_token
       Digest::SHA1.hexdigest(rand.to_s)

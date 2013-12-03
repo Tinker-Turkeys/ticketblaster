@@ -32,7 +32,7 @@ module RegistrationsHelper
     label_tag(nil, custom_field.label) +
     custom_field.options_list.map do |option|
       label_tag nil do
-        check_box_tag(custom_field.name_attr, option, value.include?(option)) + 
+        check_box_tag(custom_field.name_attr, option, (value || []).include?(option)) + 
           option
       end
     end.join("").html_safe

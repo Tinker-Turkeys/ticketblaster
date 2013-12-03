@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203162154) do
+ActiveRecord::Schema.define(version: 20131203184003) do
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -51,8 +51,9 @@ ActiveRecord::Schema.define(version: 20131203162154) do
     t.string   "name"
     t.string   "email"
     t.string   "phone_number"
-    t.boolean  "finalized",    default: false
+    t.boolean  "finalized",          default: false
     t.string   "token"
+    t.string   "custom_fields_json"
   end
 
   add_index "registrations", ["event_id"], name: "index_registrations_on_event_id"
