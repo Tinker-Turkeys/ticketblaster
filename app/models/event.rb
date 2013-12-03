@@ -44,6 +44,10 @@ class Event < ActiveRecord::Base
     self.update(canceled: true)
   end
 
+  def finalized_registrations
+    self.registrations.where(finalized: true)
+  end
+
   private
 
     def proper_custom_fields

@@ -1,69 +1,32 @@
-<h1><%= @event.title %></h1>
-
-<% if @event.canceled? %>
-  <p class="alert alert-danger">This event has been canceled.</p>
-<% end %>
-
-<div class="published"><%= @event.published %></div>
-
-<div class="remaining-slot-count">
-  <%= pluralize @event.registrations.remaining.count, 'space' %> available
+<div class="page-header">
+  <%= render 'events/tags' %>
+  <h1>
+    <%= @event.title %>
+  </h1>
 </div>
 
-<div class="registration-count">
-  <%= pluralize @event.registrations.finalized.count, 'registration' %>
-</div>
-<div class="occurring_on"><%= @event.occurring_on %></div>
-<div class="location"><%= @event.location %></div>
-<div class="description"><%= @event.description %></div>
 
-<div class="image"><%= tag :img, src: @event.image_url %></div>
-<div class="slots"><%= @event.slots %></div>
-<div class="public"><%= @event.public %></div>
-
-<% if @event.custom_fields.any? %>
-  <div class="custom_fields">
-    <table>
-      <% @event.custom_fields.each do |custom_field| %>
-        <tr>
-          <td><%= custom_field.label %></td>
-          <td><%= custom_field.explanation %></td>
-        </tr>
-
-      <% end %>
-    </table>
+<div class="row">
+  <div class="col-lg-8">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3 pull-right">
+        <%= link_to "Edit event", edit_event_path(@event), class: "btn btn-primary btn-block" %>
+      </div>
+      <div class="col-xs-12">
+        <%= render 'events/event_details' %>
+      </div>
+    </div>
+    
+    <%= render 'events/custom_fields_explanation' %>
+    <%= render 'events/registrations' %>
   </div>
-<% end %>
 
-<div class="created_at"><%= @event.created_at %></div>
-<div class="updated_at"><%= @event.updated_at %></div>
-
-<div class="controls">
-  <%= link_to "Edit event", edit_event_path(@event) %>
-  <% unless @event.canceled? %>
-    <%= link_to "Cancel event", event_path(@event), method: :delete %>
-  <% end %>
+  <div class="col-lg-4">
+    <div class="image"><%= tag :img, src: @event.image_url, width: "100%" %></div>
+    <%= render 'events/counter' %>
+    <%= render 'events/invitees/form' %>
+    <%= render 'events/invitees/list' %>
+  </div>
 </div>
 
-<div class="invitee-section">
-  <%= render 'events/invitees/list' %>
-  <%= render 'events/invitees/form' %>
-</div>
 
-<div class="registrations-section">
-  <% @finalized_registrations.each do |registration| %>
-    <% registration_data = registration.to_a(:arrays_to_strings => true) %>
-    <table>
-      <tr>
-        <th>Label</th>
-        <th>Response</th>
-      </tr>
-      <% registration_data.each do |cf| %>
-        <tr>
-          <td><%= cf[0] %></td>
-          <td><%= cf[1] %></td>
-        </tr>
-      <% end %>
-    </table>
-  <% end %>
-</div>

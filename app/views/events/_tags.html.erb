@@ -1,0 +1,14 @@
+<h4 class="pull-right">
+  <% if @event.public? %>
+    <span class="label label-info">Public</span>
+  <% else %>
+    <span class="label label-warning">Private</span>
+  <% end %>
+  <% if @event.published? %>
+    <span class="label label-success">Registration Open</span>
+  <% elsif @event.canceled? %>
+    <span class="label label-danger">Registration Closed</span>
+  <% else %>
+    <span class="label label-danger">Event Canceled</span>
+  <% end %>
+</h4>

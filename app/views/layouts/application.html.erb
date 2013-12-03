@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ticketblaster</title>
+  <title><%= COMPANY_NAME %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if notice %>
-  <div id="notice"><%= notice %></div>
-<% end %>
 
-<%= yield %>
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <% if notice %>
+        <div class="alert alert-dismissable alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <strong><%= notice %></strong>
+        </div>
+      <% end %>
+      
+      <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>

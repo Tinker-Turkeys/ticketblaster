@@ -1,0 +1,13 @@
+<h3 class="text-muted">Custom Registration Form Fields:</h3>
+
+<% if @event.custom_fields.any? %>
+  <table class="table">
+    <% @event.custom_fields.each do |custom_field| %>
+      <tr>
+        <td><strong><%= custom_field.label %></strong></td>
+        <td><%= custom_field.explanation %></td>
+      </tr>
+
+    <% end %>
+  </table>
+<% end %>

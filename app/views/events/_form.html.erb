@@ -46,3 +46,7 @@
   <%= f.submit %>
 
 <% end %>
+
+<% unless @event.canceled? %>
+  <%= link_to "Cancel event", event_path(@event), method: :delete %>
+<% end %>
