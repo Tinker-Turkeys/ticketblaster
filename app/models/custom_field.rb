@@ -1,8 +1,9 @@
 class CustomField
-  include ActiveModel::Validations
 
-  validates :type, 
-    inclusion: { in: %w(text_field radio_button check_box select) }
+  include ActiveModel::Validations
+  TYPES = %w(text_field radio_button check_box select)
+
+  validates :type, inclusion: { in: TYPES }
   validates :label, length: { minimum: 1 }
   validates :options, length: { minimum: 1 }, if: :multi_option?
 
@@ -52,6 +53,10 @@ class CustomField
     else 
       "Don't know"
     end
+  end
+
+  def self.types
+    TYPES
   end
 
 end

@@ -16,12 +16,13 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.add_custom_fields(event_params[:custom_fields])
+    @event.add_custom_fields(custom_fields_params)
 
     if params[:commit] == 'add_custom_field'
       @event.custom_fields << CustomField.new
       render :new
     elsif @event.save
+    raise
       redirect_to @event, notice: "Successfully created event"
     else
       render :new
@@ -32,7 +33,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event.add_custom_fields(event_params[:custom_fields])
+    @event.add_custom_fields(custom_fields_params)
 
     if params[:commit] == 'add_custom_field'
       @event.custom_fields << CustomField.new
@@ -62,8 +63,11 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:title, :description, :occurring_on, 
-        :location, :image_url, :slots, :published, :public, 
-        :custom_fields => [:label, :type, :name, :value, :options, :ignore])
+        :location, :image_url, :slots, :published, :public) 
     end
 
+    def custom_fields_params
+      p = params.permit(:custom_fields => [:label, :type, :name, :value, :options, :ignore])
+      p[:custom_fields]
+    end
 end

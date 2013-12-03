@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
     @custom_fields = []
     if custom_fields_hash
       custom_fields_hash.each do |custom_field|
-        unless custom_field[:ignore] || custom_field[:label].blank?
+        unless custom_field[:ignore]
           @custom_fields << CustomField.new(custom_field)
         end
       end
@@ -51,7 +51,7 @@ class Event < ActiveRecord::Base
     def proper_custom_fields
       self.custom_fields.each do |custom_field|
         unless custom_field.valid?
-          errors[:base] << custom_field.errors.full_messages.first
+          errors[:custom_fields] << custom_field.errors.full_messages.first
         end
       end
     end

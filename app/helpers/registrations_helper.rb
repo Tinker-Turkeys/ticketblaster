@@ -1,9 +1,7 @@
 module RegistrationsHelper
 
   def custom_field_tag(custom_field, value)
-    allowed = [:text_field, :select, :radio_button, :check_box]
-
-    if allowed.include?(custom_field.type.to_sym)
+    if CustomField.types.include?(custom_field.type)
       send("custom_#{custom_field.type}_tag", custom_field, value)
     end
   end
