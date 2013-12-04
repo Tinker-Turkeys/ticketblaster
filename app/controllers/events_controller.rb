@@ -18,7 +18,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.add_custom_fields(custom_fields_params)
 
-    if params[:commit] == 'add_custom_field'
+    if params[:commit] == 'Add Custom Form Field'
       @event.custom_fields << CustomField.new
       render :new
     elsif @event.save
@@ -32,9 +32,10 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event.attributes = event_params
     @event.add_custom_fields(custom_fields_params)
 
-    if params[:commit] == 'add_custom_field'
+    if params[:commit] == 'Add Custom Form Field'
       @event.custom_fields << CustomField.new
       render :edit
     elsif @event.update(event_params)

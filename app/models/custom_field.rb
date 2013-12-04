@@ -52,8 +52,6 @@ class CustomField
       "Free form response"
     elsif multi_value?
       "Confirmation"
-    else 
-      "Don't know"
     end
   end
 

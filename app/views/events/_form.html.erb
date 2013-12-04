@@ -6,62 +6,123 @@
   </div>
 <% end %>
 
-<%= form_for(@event, html: { role: "form" }) do |f| %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>  
+<%= form_for(@event, html: { role: "form", class: "form-horizontal" }) do |f| %>
 
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">General Information</h3>
+    </div>
+    <div class="panel-body">
+
+
+      <div class="form-group">
+        <%= f.label :title, class: "control-label col-lg-2" %>
+        <div class="col-lg-10">
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+      </div>  
+
+      <div class="form-group">
+        <%= f.label :description, class: "control-label col-lg-2" %>
+        <div class="col-lg-10">
+          <%= f.text_area :description, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :occurring_on, class: "control-label col-lg-2" %>
+        <div class="col-lg-10">
+          <%= f.date_field :occurring_on, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :location, class: "control-label col-lg-2" %>
+        <div class="col-lg-10">
+          <%= f.text_field :location, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :image_url, class: "control-label col-lg-2" %>
+        <div class="col-lg-10">
+          <%= f.text_field :image_url, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :slots, class: "control-label col-lg-2" %>
+        <div class="col-lg-10">
+          <%= f.text_field :slots, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= label_tag nil, "Status", class: "control-label col-lg-2" %>
+        <div class="col-lg-10">
+          <%= f.check_box :published %>
+          <%= f.label :published do %>
+              Open event for registration
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :public, class: "control-label col-lg-2" %>
+        <div class="col-lg-10">
+          <div>
+        </div>
+          <%= label_tag nil do %>
+            <%= f.radio_button :public, true %> Public
+          <% end %>
+          <%= label_tag do %>
+            <%= f.radio_button :public, false %> Private
+          <% end %>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :occurring_on %>
-    <%= f.date_field :occurring_on, class: "form-control" %>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Custom Form Fields</h3>
+    </div>
+    <div class="panel-body">
+      <% if @event.custom_fields.any? %>
+        <% @event.custom_fields.each do |custom_field| %>
+          <%= render partial: "custom_field", locals: { custom_field: custom_field } %>
+        <% end %>
+      <% else %>
+        <div class="row">
+          <div class="col-lg-offset-2 col-lg-10">
+            You can add a customized for to the registration.
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="col-lg-offset-2 col-lg-10">
+          <%= submit_tag :add_custom_field, value: "Add Custom Form Field", class: "btn btn-info btn-sm" %>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :location %>
-    <%= f.text_field :location, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :image_url %>
-    <%= f.text_field :image_url, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :slots %>
-    <%= f.text_field :slots, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :published %>
-    <%= f.check_box :published, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :public %>
-    <%= label_tag nil, class: "form-control" do %>
-      <%= f.radio_button :public, true %> Public
-    <% end %>
-  </div>
-  <%= label_tag do %>
-    <%= f.radio_button :public, false %> Private
-  <% end %>
-
-  <% @event.custom_fields.each do |custom_field| %>
-    <%= render partial: "custom_field", locals: { custom_field: custom_field } %>
-  <% end %>
-
-  <%= submit_tag :add_custom_field %>
-
-  <%= f.submit %>
+  <%= f.submit class: "btn btn-success btn-block" %>
 
 <% end %>
 
-<% unless @event.canceled? || @event.new_record? %>
-  <%= link_to "Cancel event", event_path(@event), method: :delete %>
+<% unless @event.new_record? || @event.canceled? %>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title"><strong>DangerZone</strong></h3>
+    </div>
+    <div class="panel-body">
+      <p>Here you can permanently cancel the event.</p>
+        <%= link_to "Cancel event", event_path(@event), method: :delete,
+              class: "btn btn-danger btn-block" %>
+    </div>
+  </div>
 <% end %>
+
