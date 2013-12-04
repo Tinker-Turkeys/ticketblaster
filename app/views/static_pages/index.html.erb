@@ -21,31 +21,41 @@
   </div>
 
   <div>
-    <h1 class="homepage-events-header col-lg-8 col-lg-offset-2">Check out some upcoming events</h1>
+    <h1 class="homepage-events-header col-lg-8 col-lg-offset-2">
+      Check out some upcoming events
+    </h1>
     <% @open_events.each do |event| %>
       <% if event.nearly_full? %>
         <div class="nearly-full-event homepage-event col-lg-4 well">
+          <h3><%= link_to event.title, new_event_registration_path(event) %></h3>
+          <ul>
+            <li><%= event.occurring_on %></li>
+            <li><%= event.location %></li>
+            <li>
+              <h4 class="remaining-spaces-warning">
+                Only <%= pluralize(event.spaces_remaining, 'Space') %> left!
+              </h4>
+            </li>
+          </ul>
+          <%= link_to "Register Soon!", new_event_registration_path(event), 
+            class: "btn btn-default btn-lg btn-block" %>
+        </div>
       <% else %>
         <div class="homepage-event col-lg-4 well">
+          <h3><%= link_to event.title, new_event_registration_path(event) %></h3>
+          <ul>
+            <li><%= event.occurring_on %></li>
+            <li><%= event.location %></li>
+            <li>
+              <h4 class="remaining-spaces">
+                <%= pluralize(event.spaces_remaining, 'Space') %> still available
+              </h4>
+            </li>
+          </ul>
+          <%= link_to "Register!", new_event_registration_path(event), 
+            class: "btn btn-default btn-lg btn-block" %>
+        </div>
       <% end %>
-        <h3><%= link_to event.title, new_event_registration_path(event) %></h3>
-        <ul>
-          <li><%= event.occurring_on %></li>
-          <li><%= event.location %></li>
-          <li>
-            <% if event.nearly_full? %>
-            <h4 class="remaining-spaces-warning">
-              Only <%= pluralize(event.spaces_remaining, 'Space') %> left!
-            </h4>
-            <% else %>
-            <h4 class="remaining-spaces">
-              <%= pluralize(event.spaces_remaining, 'Space') %> still available
-            </h4>
-            <% end %>
-          </li>
-        </ul>
-        <%= link_to "Register!", new_event_registration_path(event), class: "btn btn-default btn-lg btn-block" %>
-      </div>
     <% end %>
   </div>
 
