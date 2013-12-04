@@ -12,8 +12,8 @@ class CustomField
   def initialize(attributes = {})
     self.label = attributes[:label]
     @type = attributes[:type]
-    @value = attributes[:value] ? sanitize_list(attributes[:value]) : []
-    @options = attributes[:options] ? sanitize_list(attributes[:options]) : []
+    @value = attributes[:value] ? sanitize_list(attributes[:value]) : ""
+    @options = attributes[:options] ? sanitize_list(attributes[:options]) : ""
   end
 
   def label=(label)

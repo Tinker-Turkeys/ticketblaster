@@ -8,6 +8,26 @@
 </head>
 <body>
 
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <span class="navbar-brand"><%= COMPANY_NAME %></span>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to "Event listing", events_path %>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Logout", logout_path, method: 'delete' %></li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
 
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1">

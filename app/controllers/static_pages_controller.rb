@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
   layout 'homepage'
 
   def index
-    
+    @public_events = Event.where(public: true)
   end
 
 end

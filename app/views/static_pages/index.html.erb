@@ -1,50 +1,36 @@
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <span class="navbar-brand"><%= COMPANY_NAME %></span>
-    </div>
-    <div class="navbar-collapse collapse" id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li>
-          <%= link_to "Event listing", events_path %>
-        </li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <% if signed_in? %>
-          <li><%= link_to "Logout", logout_path, method: 'delete' %></li>
-        <% else %>
-          <li><%= link_to "Welcome, guest! Want to login?", root_path %></li>
-        <% end %>
-      </ul>
-
-    </div>
-  </div>
-</div>
-
 <div class="container">
   <div class="jumbotron col-lg-12">
     <div class="welcome">
-      <h1>Welcome to <span class="logo"><%= COMPANY_NAME %></span></h1>
+      <h1 class="col-lg-12">Welcome to <span class="logo"><%= COMPANY_NAME %></span></h1>
     </div>
     <div class="row">
-      <div class="col-lg-10 col-lg-offset-1 blurb">
-        <blockquote>
-          A place to something-or-other and also other things appear in this blurb.
-        </blockquote>
+      <div class="col-lg-8 col-lg-offset-1 blurb">
+        <p>A place to something-or-other and also other things appear in this blurb.</p>
       </div>
     </div>
-    <div class="col-lg-8">
-      <button type="button" class="btn btn-primary btn-lg">
-        <%= link_to "Login with Twitter", twitter_login_path %>
-      </button>
+    <div class="row home-buttons">
+      <div class="col-lg-10 col-lg-offset-1">
+        <% if signed_in? %>
+          <button type="button" class="btn btn-primary btn-lg">
+            <%= link_to "Go to your account", events_path %>
+          </button>  
+        <% else %>
+          <button type="button" class="btn btn-primary btn-lg">
+            <%= link_to "Login with Twitter", twitter_login_path %>
+          </button>
 
-      <button type="button" class="btn btn-primary btn-lg">
-        <%= link_to "Login with Facebook", facebook_login_path %>
-      </button>
+          <button type="button" class="btn btn-primary btn-lg">
+            <%= link_to "Login with Facebook", facebook_login_path %>
+          </button>
+        <% end %>
+      </div>
     </div>
     <div class="clearfix"></div>
   </div>
+
+  <% @public_events.each do |event| %>
+    <%= event %>
+  <% end %>
 
   <br>
   <br>

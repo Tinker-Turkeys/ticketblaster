@@ -12,24 +12,3 @@
  *= require_self
  *= require_tree .
  */
-
-
-/*
-#nav {
-  color: #444;
-  z-index: 1;
-  height: 60px;
-  width: 100%;
-  position: fixed;
-  background-color: #FFCB3F;
-  box-shadow: 0px 3px 3px rgba(0,0,0,.5);
-}
-
-.nav-section-both-borders {
-  display: inline-block;
-  height: 50px;
-  border-left: 1px solid #444;
-  border-right: 1px solid #444;
-}
-
-*/

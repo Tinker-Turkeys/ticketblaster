@@ -47,6 +47,6 @@
 
 <% end %>
 
-<% unless @event.canceled? %>
+<% unless @event.canceled? || @event.new_record? %>
   <%= link_to "Cancel event", event_path(@event), method: :delete %>
 <% end %>
