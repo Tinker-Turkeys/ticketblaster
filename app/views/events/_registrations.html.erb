@@ -2,7 +2,7 @@
 <% @event.finalized_registrations.each do |registration| %>
   <% registration_data = registration.to_a(:arrays_to_strings => true) %>
   <div class="col-lg-6">
-    <table class="table">
+    <table class="table table-bordered table-condensed">
       <tr>
         <th>Label</th>
         <th>Response</th>
