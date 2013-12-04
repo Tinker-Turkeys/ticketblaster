@@ -1,6 +1,6 @@
-<h1>Registrations#new</h1>
+<h1>Register for <%= @event.title %></h1>
 
-<%= form_for [@event, @registration] do |f| %>
+<%= form_for [@event, @registration]  do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 

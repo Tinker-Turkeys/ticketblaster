@@ -26,7 +26,7 @@
     </h1>
     <% @open_events.each do |event| %>
       <% if event.nearly_full? %>
-        <div class="nearly-full-event homepage-event col-lg-4 well">
+        <div class="homepage-event col-lg-4 well">
           <h3><%= link_to event.title, new_event_registration_path(event) %></h3>
           <ul>
             <li><%= event.occurring_on %></li>
@@ -38,7 +38,7 @@
             </li>
           </ul>
           <%= link_to "Register Soon!", new_event_registration_path(event), 
-            class: "btn btn-default btn-lg btn-block" %>
+            class: "btn btn-nearly-full btn-lg btn-block" %>
         </div>
       <% else %>
         <div class="homepage-event col-lg-4 well">
@@ -52,7 +52,7 @@
               </h4>
             </li>
           </ul>
-          <%= link_to "Register!", new_event_registration_path(event), 
+          <%= link_to "Register", new_event_registration_path(event), 
             class: "btn btn-default btn-lg btn-block" %>
         </div>
       <% end %>
