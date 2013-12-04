@@ -60,6 +60,10 @@ class Event < ActiveRecord::Base
     where(public: true).joins(:registrations).where(registrations: { finalized: false }).group("events.id")
   end
 
+  def nearly_full?
+    self.spaces_remaining < 6
+  end
+
   def cancel!
     self.update(canceled: true)
   end

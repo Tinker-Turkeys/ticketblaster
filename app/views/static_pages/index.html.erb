@@ -10,17 +10,10 @@
     <div class="row" id="home-buttons">
       <div class="col-lg-10 col-lg-offset-1">
         <% if signed_in? %>
-          <button type="button" class="btn btn-primary btn-lg">
-            <%= link_to "Go to your account", events_path %>
-          </button>  
+            <%= link_to "Go to your account", events_path, class: "btn btn-primary btn-lg" %>
         <% else %>
-          <button type="button" class="btn btn-primary btn-lg">
-            <%= link_to "Login with Twitter", twitter_login_path %>
-          </button>
-
-          <button type="button" class="btn btn-primary btn-lg">
-            <%= link_to "Login with Facebook", facebook_login_path %>
-          </button>
+            <%= link_to "Login with Twitter", twitter_login_path, class: "btn btn-primary btn-lg" %>
+            <%= link_to "Login with Facebook", facebook_login_path, class: "btn btn-primary btn-lg" %>
         <% end %>
       </div>
     </div>
@@ -37,6 +30,7 @@
           <li><%= event.location %></li>
           <li>
             <% if event.registrations.where(finalized: false).count < 5 %>
+            <h4 class="remaining-spaces-warning">
             <% else %>
             <h4 class="remaining-spaces">
             <% end %>

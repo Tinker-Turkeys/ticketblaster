@@ -70,9 +70,13 @@
       li {
         list-style: none;
 
-        .remaining-spaces{
+        .remaining-spaces {
           /* */
         }
+        .remaining-spaces-warning {
+          color: red;
+        }
+
       }
     }  
 }
