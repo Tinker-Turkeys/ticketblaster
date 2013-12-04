@@ -30,14 +30,15 @@ e1 = Event.new({
   end
 
 e1.save
-# e1.invitees.create({ name: "Manuel Neuhauser", email: "manuel@rokatu.com", 
-#   phone_number: "3366550667"})
-# e1.invitees.create({ name: "Vinney Cavallo", email: "vcavallo@gmail.com", 
-#   phone_number: "9145526614"})
-# e1.invitees.create({ name: "Jai-Lee Egna", email: "jailee.egna@gmail.com" })
-# e1.invitees.create({ name: "Mooskers The Cat", phone_number: "9175438327"})
+e1.invitees.create({ name: "Manuel Neuhauser", email: "manuel@rokatu.com", 
+  phone_number: "3366550667"})
+e1.invitees.create({ name: "Vinney Cavallo", email: "vcavallo@gmail.com", 
+  phone_number: "9145526614"})
+e1.invitees.create({ name: "Jai-Lee Egna", email: "jailee.egna@gmail.com" })
+e1.invitees.create({ name: "Mooskers The Cat", phone_number: "9175438327"})
 
-# e1.registrations.first.update({ price: 0, name: "Josh Scaglione", 
-#   email: "josh@scagmail.com", finalized: true})
-# e1.registrations.last.update({ name: "Avi Flombaum", email: "me@avi.com", 
-#   finalized: true })
+e1.registrations.first.update({ price: 0, name: "Josh Scaglione", 
+  email: "josh@scagmail.com", finalized: true})
+e1.registrations.last.update({ name: "Avi Flombaum", email: "me@avi.com", 
+  finalized: true })
+

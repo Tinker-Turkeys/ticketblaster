@@ -1,6 +1,5 @@
-<div class="container">
   <div class="jumbotron col-lg-12">
-    <div class="welcome">
+    <div id="welcome">
       <h1 class="col-lg-12">Welcome to <span class="logo"><%= COMPANY_NAME %></span></h1>
     </div>
     <div class="row">
@@ -8,7 +7,7 @@
         <p>A place to something-or-other and also other things appear in this blurb.</p>
       </div>
     </div>
-    <div class="row home-buttons">
+    <div class="row" id="home-buttons">
       <div class="col-lg-10 col-lg-offset-1">
         <% if signed_in? %>
           <button type="button" class="btn btn-primary btn-lg">
@@ -28,26 +27,26 @@
     <div class="clearfix"></div>
   </div>
 
-  <% @public_events.each do |event| %>
-    <%= event %>
-  <% end %>
+  <div>
+    <h1 class="homepage-events-header col-lg-8 col-lg-offset-2">Check out some upcoming events</h1>
+    <% @open_events.each do |event| %>
+      <div class="homepage-event col-lg-4 well">
+        <h3><%= link_to event.title, event_path(event) %></h3>
+        <ul>
+          <li><%= event.occurring_on %></li>
+          <li><%= event.location %></li>
+          <li>
+            <% if event.registrations.where(finalized: false).count < 5 %>
+            <% else %>
+            <h4 class="remaining-spaces">
+            <% end %>
+              <%= pluralize(event.registrations
+                .where(finalized: false).count, 'Space') %> still available!
+            </h4>
+          </li>
 
-  <br>
-  <br>
-  <p>stuff stuff stuff</p>
-  <br>
-  <br>
-  <br>
-  <br>
-  <p>stuff stuff stuff</p>
-  <br>
-  <br>  <br>
-  <br>
-  <p>stuff stuff stuff</p>
-  <br>
-  <br>  <br>
-  <br>
-  <p>stuff stuff stuff</p>
-  <br>
-  <br>
-</div> <!-- end container -->
+        </ul>
+      </div>
+    <% end %>
+  </div>
+

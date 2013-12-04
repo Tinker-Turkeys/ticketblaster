@@ -40,6 +40,26 @@ class Event < ActiveRecord::Base
     self.occurring_on < Time.now
   end
 
+  def total_spaces
+    self.registrations.count
+  end
+
+  def spaces_remaining
+    self.registrations.where(finalized: false).count
+  end
+
+  def spaces_filled
+    self.registrations.count - self.spaces_remaining
+  end
+
+  def full?
+    self.spaces_remaining == 0
+  end
+
+  def self.open
+    where(public: true).joins(:registrations).where(registrations: { finalized: false }).group("events.id")
+  end
+
   def cancel!
     self.update(canceled: true)
   end
