@@ -46,20 +46,20 @@
     }
   }
 
-  .btn a {
+  .btn, .btn-block a {
     color: white;
   }
 
-  .btn a:hover{
+  .btn, .btn-block a:hover{
     text-decoration: none;
   }
 
-  .btn-primary {
+  .btn-primary, .btn-block {
     background-color: #34C6CD;
     border-color: #44969A;
   }
 
-  .btn-primary:hover {
+  .btn-primary:hover, .btn-block:hover {
     background-color: #44969A;
   }
 
@@ -73,11 +73,11 @@
     li {
       list-style: none;
     }
+
   }
 
   .nearly-full-event {
     border: 4px dashed #F63D62;
-    height: 179px;
   }
   
   .remaining-spaces-warning {
