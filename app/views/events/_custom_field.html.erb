@@ -1,39 +1,41 @@
-<div class="form-group">
-  <%= label_tag "event_custom_fields_label", "Label", class: "control-label col-lg-2" %>
-  <div class="col-lg-10">
-    <%= text_field_tag "custom_fields[][label]", custom_field.label, class: "form-control" %>
-  </div>
-</div>
+<%= fields_for(custom_field) do |cf| %>
 
-<div class="form-group">
-  <%= label_tag "event_custom_fields_type", "Field type", class: "control-label col-lg-2" %>
-  <div class="col-lg-10">
-    <%= select_tag "custom_fields[][type]", 
-        options_for_select(CustomField.types.map { |c| [c.humanize, c] },
-          custom_field.type),
-        class: "form-control" %>
+  <div class="form-group">
+    <%= cf.label :label, for: "cf_label_#{idx}", class: "control-label col-lg-2" %>
+    <div class="col-lg-10">
+      <%= cf.text_field :label, name: "custom_fields[][label]", class: "form-control", id: "cf_label_#{idx}" %>
+    </div>
   </div>
-</div>
 
-<div class="form-group">
-  <%= label_tag "event_custom_fields_value", "Default value", class: "control-label col-lg-2" %>
-  <div class="col-lg-10">
-    <%= text_field_tag "custom_fields[][value]", custom_field.value, class: "form-control" %>
+  <div class="form-group">
+    <%= cf.label :type, "Field type", for: "cf_type_#{idx}", class: "control-label col-lg-2" %>
+    <div class="col-lg-10">
+      <%= cf.select :type, 
+          CustomField.types.map { |c| [c.humanize, c] }, {},
+          name: "custom_fields[][type]", id: "cf_type_#{idx}",
+          class: "form-control" %>
+    </div>
   </div>
-</div>
 
-<div class="form-group">
-  <%= label_tag "event_custom_fields_options", "Options", class: "control-label col-lg-2" %>
-  <div class="col-lg-10">
-    <%= text_field_tag "custom_fields[][options]", custom_field.options, class: "form-control" %>
+  <div class="form-group">
+    <%= cf.label :value, "Default value", for: "cf_value_#{idx}", class: "control-label col-lg-2" %>
+    <div class="col-lg-10">
+      <%= cf.text_field :value, name: "custom_fields[][value]", id: "cf_value_#{idx}", class: "form-control" %>
+    </div>
   </div>
-</div>
 
-<% if true || @event.persisted? %>
+  <div class="form-group">
+    <%= cf.label :options, for: "cf_options_#{idx}", class: "control-label col-lg-2" %>
+    <div class="col-lg-10">
+      <%= cf.text_field :options, name: "custom_fields[][options]", id: "cf_options_#{idx}", class: "form-control" %>
+    </div>
+  </div>
+
   <div class="form-group">
     <%= label_tag nil, class: "col-lg-10 col-lg-offset-2" do %>
         <%= check_box_tag "custom_fields[][ignore]", nil, false %>
-        Delete
+        <strong>Delete</strong> &mdash; Remove this field from the form
     <% end %>
   </div>
+
 <% end %>
