@@ -7,7 +7,7 @@
   background: image_url('squairy_light.png');
 
   .jumbotron {
-    margin-top:5%;
+    margin-top:3%;
     margin-bottom: 0;
   }
 
@@ -32,7 +32,7 @@
     color: #777;
     margin-top: 30px;
     margin-bottom: 30px;
-    border-left: 1px dotted #777;
+    border-left: 2px dashed #F63D62;
   }
 
   /* this should probably go somewhere more global */
@@ -42,6 +42,9 @@
 
   #home-buttons {
     margin-left: -30px;
+    .social {
+      text-align: right;
+    }
   }
 
   .btn a {
@@ -64,19 +67,22 @@
   .homepage-events-header {
     margin-top: 40px;
     margin-bottom: 40px;
+    text-align: center;
   }
 
-    .homepage-event {
-      li {
-        list-style: none;
+  .homepage-event {
+    li {
+      list-style: none;
+    }
+  }
 
-        .remaining-spaces {
-          /* */
-        }
-        .remaining-spaces-warning {
-          color: red;
-        }
-
-      }
-    }  
+  .nearly-full-event {
+    border: 4px dashed #F63D62;
+    height: 179px;
+  }
+  
+  .remaining-spaces-warning {
+      color: #F63D62;
+      font-weight: 500;
+  }  
 }

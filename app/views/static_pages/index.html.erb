@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="row" id="home-buttons">
-      <div class="col-lg-10 col-lg-offset-1">
+      <div class="col-lg-8 col-lg-offset-1">
         <% if signed_in? %>
             <%= link_to "Go to your account", events_path, class: "btn btn-primary btn-lg" %>
         <% else %>
@@ -23,20 +23,24 @@
   <div>
     <h1 class="homepage-events-header col-lg-8 col-lg-offset-2">Check out some upcoming events</h1>
     <% @open_events.each do |event| %>
-      <div class="homepage-event col-lg-4 well">
+      <% if event.nearly_full? %>
+        <div class="nearly-full-event homepage-event col-lg-4 well">
+      <% else %>
+        <div class="homepage-event col-lg-4 well">
+      <% end %>
         <h3><%= link_to event.title, event_path(event) %></h3>
         <ul>
           <li><%= event.occurring_on %></li>
           <li><%= event.location %></li>
           <li>
-            <% if event.registrations.where(finalized: false).count < 5 %>
+            <% if event.nearly_full? %>
             <h4 class="remaining-spaces-warning">
+              Only <%= pluralize(event.spaces_remaining, 'Space') %> left!
             <% else %>
             <h4 class="remaining-spaces">
-            <% end %>
-              <%= pluralize(event.registrations
-                .where(finalized: false).count, 'Space') %> still available!
+              <%= pluralize(event.spaces_remaining, 'Space') %> still available
             </h4>
+            <% end %>
           </li>
 
         </ul>
