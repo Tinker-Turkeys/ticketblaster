@@ -1,20 +1,39 @@
-<%= label_tag "event_custom_fields_label", "Label" %>
-<%= text_field_tag "custom_fields[][label]", custom_field.label %>
+<div class="form-group">
+  <%= label_tag "event_custom_fields_label", "Label", class: "control-label col-lg-2" %>
+  <div class="col-lg-10">
+    <%= text_field_tag "custom_fields[][label]", custom_field.label, class: "form-control" %>
+  </div>
+</div>
 
-<%= label_tag "event_custom_fields_type", "Field type" %>
-<%= select_tag "custom_fields[][type]", 
-  options_for_select(CustomField.types.map { |c| [c.humanize, c] }, 
-    custom_field.type) %>
+<div class="form-group">
+  <%= label_tag "event_custom_fields_type", "Field type", class: "control-label col-lg-2" %>
+  <div class="col-lg-10">
+    <%= select_tag "custom_fields[][type]", 
+        options_for_select(CustomField.types.map { |c| [c.humanize, c] },
+          custom_field.type),
+        class: "form-control" %>
+  </div>
+</div>
 
-<%= label_tag "event_custom_fields_value", "Default value" %>
-<%= text_field_tag "custom_fields[][value]", custom_field.value %>
+<div class="form-group">
+  <%= label_tag "event_custom_fields_value", "Default value", class: "control-label col-lg-2" %>
+  <div class="col-lg-10">
+    <%= text_field_tag "custom_fields[][value]", custom_field.value, class: "form-control" %>
+  </div>
+</div>
 
-<%= label_tag "event_custom_fields_options", "Options" %>
-<%= text_field_tag "custom_fields[][options]", custom_field.options %>
+<div class="form-group">
+  <%= label_tag "event_custom_fields_options", "Options", class: "control-label col-lg-2" %>
+  <div class="col-lg-10">
+    <%= text_field_tag "custom_fields[][options]", custom_field.options, class: "form-control" %>
+  </div>
+</div>
 
-<% if @event.persisted? %>
-  <%= label_tag nil do %>
-    <%= check_box_tag "custom_fields[][ignore]", true %>
-    Delete
-  <% end %>
+<% if true || @event.persisted? %>
+  <div class="form-group">
+    <%= label_tag nil, class: "col-lg-10 col-lg-offset-2" do %>
+        <%= check_box_tag "custom_fields[][ignore]", nil, false %>
+        Delete
+    <% end %>
+  </div>
 <% end %>

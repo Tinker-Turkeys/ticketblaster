@@ -8,14 +8,20 @@ module RegistrationsHelper
   end
 
   def custom_text_field_tag(custom_field, value)
-    label_tag(custom_field.name_attr, custom_field.label) +
-    text_field_tag(custom_field.name_attr, (value||custom_field.value))
+    content_tag :div, class: "form-group" do
+      label_tag(custom_field.name_attr, custom_field.label) +
+        text_field_tag(custom_field.name_attr, (value || custom_field.value),
+          class: "form-control")
+    end
   end
 
   def custom_select_tag(custom_field, value)
     label_tag(custom_field.name_attr, custom_field.label) +
     select_tag(custom_field.name_attr, 
-      options_for_select(custom_field.options_list, (value||custom_field.value)))
+      options_for_select(custom_field.options_list, 
+        (value || custom_field.value)
+      ),
+      class: "form-control")
   end
 
   def custom_radio_button_tag(custom_field, value)
