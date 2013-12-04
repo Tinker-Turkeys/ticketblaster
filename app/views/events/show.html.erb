@@ -10,14 +10,16 @@
   <div class="col-lg-8">
     <div class="row">
       <div class="col-xs-12 col-sm-3 pull-right">
-        <%= link_to "Edit event", edit_event_path(@event), class: "btn btn-primary btn-block" %>
+        <%= link_to "Edit event", edit_event_path(@event), class: "btn btn-sm btn-primary btn-block" %>
       </div>
       <div class="col-xs-12">
         <%= render 'events/event_details' %>
       </div>
     </div>
-    
+
+
     <%= render 'events/custom_fields_explanation' %>
+    <%= render 'events/registration_url' %>
     <%= render 'events/registrations' %>
   </div>
 

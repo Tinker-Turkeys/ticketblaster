@@ -6,33 +6,48 @@
   </div>
 <% end %>
 
-<%= form_for @event do |f| %>
-  
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<%= form_for(@event, html: { role: "form" }) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>  
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
 
-  <%= f.label :occurring_on %>
-  <%= f.date_field :occurring_on %>
+  <div class="form-group">
+    <%= f.label :occurring_on %>
+    <%= f.date_field :occurring_on, class: "form-control" %>
+  </div>
 
-  <%= f.label :location %>
-  <%= f.text_field :location %>
+  <div class="form-group">
+    <%= f.label :location %>
+    <%= f.text_field :location, class: "form-control" %>
+  </div>
 
-  <%= f.label :image_url %>
-  <%= f.text_field :image_url %>
+  <div class="form-group">
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url, class: "form-control" %>
+  </div>
 
-  <%= f.label :slots %>
-  <%= f.text_field :slots %>
+  <div class="form-group">
+    <%= f.label :slots %>
+    <%= f.text_field :slots, class: "form-control" %>
+  </div>
 
-  <%= f.label :published %>
-  <%= f.check_box :published %>
+  <div class="form-group">
+    <%= f.label :published %>
+    <%= f.check_box :published, class: "form-control" %>
+  </div>
 
-  <%= f.label :public %>
-  <%= label_tag do %>
-    <%= f.radio_button :public, true %> Public
-  <% end %>
+  <div class="form-group">
+    <%= f.label :public %>
+    <%= label_tag nil, class: "form-control" do %>
+      <%= f.radio_button :public, true %> Public
+    <% end %>
+  </div>
   <%= label_tag do %>
     <%= f.radio_button :public, false %> Private
   <% end %>

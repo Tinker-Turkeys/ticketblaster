@@ -45,7 +45,9 @@ class CustomField
 
   def explanation
     if self.options && self.options[1]
-      "One #{ multi_value? ? 'or more' : '' } of these options: #{self.options}"
+      conjunction = multi_value? ? 'and' : 'or'
+      "One #{ multi_value? ? 'or more' : '' } of these options: " +
+        self.options.gsub(",",", ").sub(/(.*),/, '\1 ' + conjunction)
     elsif self.type == 'text_field'
       "Free form response"
     elsif multi_value?
