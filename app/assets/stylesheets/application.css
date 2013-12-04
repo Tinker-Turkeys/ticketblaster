@@ -13,14 +13,6 @@
  *= require_tree .
  */
 
-.btn-primary {
-  background-color: #34C6CD;
-  border-color: #44969A;
-}
-
-.btn-primary:hover {
-  background-color: #44969A;
-}
 
 /*
 #nav {

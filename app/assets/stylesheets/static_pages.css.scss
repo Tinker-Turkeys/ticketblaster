@@ -2,43 +2,54 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-  background: image_url('squairy_light.png')
-}
+#homepage {
 
-.jumbotron {
-  margin-top:10%;
-}
+  background: image_url('squairy_light.png');
 
-.welcome h1{
-  font-size: 3.5em;
-  letter-spacing: -3px;
-  margin-bottom: 5%;
-}
+  .jumbotron {
+    margin-top:10%;
+  }
 
-/* this should probably go somewhere more global */
-.logo {
-  color: #fff;
-  font-weight: 500;
-  letter-spacing: -5px;
-  font-size: 1.25em;
-  background-color: #FFCB3F;
-  padding: 5px 15px;
-  border-radius: 10px;
-}
+  .welcome h1{
+    font-size: 3.5em;
+    letter-spacing: -3px;
+    margin-bottom: 5%;
+  }
 
-.blurb {
-  padding: 15px;
-}
+  .logo {
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: -5px;
+    font-size: 1.25em;
+    background-color: #FFCB3F;
+    padding: 5px 15px;
+    border-radius: 10px;
+  }
 
-.btn:hover {
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
-}
+  .blurb {
+    padding: 15px;
+  }
 
-.btn a {
-  color: white;
-}
+  /* this should probably go somewhere more global */
+  .btn:hover {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+  }
 
-.btn a:hover{
-  text-decoration: none;
+  .btn a {
+    color: white;
+  }
+
+  .btn a:hover{
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: #34C6CD;
+    border-color: #44969A;
+  }
+
+  .btn-primary:hover {
+    background-color: #44969A;
+  }
+
 }
