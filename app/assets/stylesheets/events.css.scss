@@ -1,3 +1,14 @@
-// Place all the styles related to the Events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#events-show {
+  h3 {
+    margin-top: 50px;
+  }
+}
+
+#event-cancelation {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.custom-field-divider {
+  margin-bottom: 40px;
+}

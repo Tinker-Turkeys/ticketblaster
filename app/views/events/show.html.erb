@@ -6,10 +6,10 @@
 </div>
 
 
-<div class="row">
-  <div class="col-lg-8">
+<div class="row" id="events-show">
+  <div class="col-lg-7 col-md-7">
     <div class="row">
-      <div class="col-xs-12 col-sm-3 pull-right">
+      <div class="col-xs-12 col-md-3 pull-right">
         <%= link_to "Edit event", edit_event_path(@event), class: "btn btn-sm btn-primary btn-block" %>
         <div class="clearfix"></div>
       </div>
@@ -24,12 +24,10 @@
     <%= render 'events/registrations' %>
   </div>
 
-  <div class="col-lg-4">
+  <div class="col-lg-offset-1 col-lg-4 col-sm-5">
     <div class="hidden-sm hidden-xs""><%= tag :img, src: @event.image_url, width: "100%" %></div>
     <%= render 'events/counter' %>
-    <%= render 'events/invitees/form' %>
     <%= render 'events/invitees/list' %>
+    <%= render 'events/invitees/form' %>
   </div>
 </div>
-
-

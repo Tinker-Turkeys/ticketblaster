@@ -1,14 +1,14 @@
 <ul class="list-group">
   <li class="list-group-item">
     <span class="badge"><%= @event.registrations.remaining.count %></span>
-    Available Registrations
+    <strong class="text-muted">Available Registrations</strong>
   </li>
   <li class="list-group-item">
     <span class="badge"><%= @event.registrations.finalized.count %></span>
-    Finalized Registrations
+    <strong class="text-muted">Finalized Registrations</strong>
   </li>
   <li class="list-group-item">
     <span class="badge"><%= @event.slots %></span>
-    Total Registrations
+    <strong class="text-muted">Total Registrations</strong>
   </li>
 </ul>

@@ -1,28 +1,34 @@
 <% if @event.invitees.persisted.any? %>
-  <ul class="nav nav-pills nav-stacked">
-    <% @event.invitees.each do |invitee| %>
-      <% next unless invitee.id %>
-      <li class="dropdown">
-        <%= link_to '#', class: "dropdown-toggle", data: { toggle: "dropdown"} do %>
-          <span class="caret"></span> 
-          <%= invitee.name %>
-<!--           <% if invitee.registration.blank? %>
-            Pending
-          <% else %>
-            Attending
-          <% end %>
- -->        <% end %>
-        <ul class="dropdown-menu">
-          <li>
-            <%= link_to 'Edit', edit_event_invitee_path(@event, invitee) %>
-          </li>
-          <li>
-            <%= link_to 'Remove', event_invitee_path(@event, invitee), 
-                    method: :delete, 
-                    confirm: "Do you want to uninvite #{invitee.name}?" %>
-          </li>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
+  <div class="well">
+    <h4>Invited Guests</h4>
+    <ul class="nav nav-pills nav-stacked">
+      <% @event.invitees.each do |invitee| %>
+        <% next unless invitee.id %>
+        <li class="dropdown">
+          <%= link_to '#', class: "dropdown-toggle", data: { toggle: "dropdown"} do %>
+            <span class="caret"></span> 
+            <%= invitee.name %>
+              <% if invitee.registration.blank? %>
+                (Registration Pending)
+              <% else %>
+                (Attending)
+              <% end %>
+            <% end %>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to 'Edit', edit_event_invitee_path(@event, invitee) %>
+            </li>
+            <li>
+              <%= link_to 'Resend Invite', "#" %>
+            </li>
+            <li>
+              <%= link_to 'Remove', event_invitee_path(@event, invitee), 
+                      method: :delete, 
+                      confirm: "Do you want to uninvite #{invitee.name}?" %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>

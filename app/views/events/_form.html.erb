@@ -1,148 +1,153 @@
-<% if @event.errors.any? %>
-  <div class="alert alert-dismissable alert-danger">
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <strong>Oh snap!</strong>
-      <% @event.errors.full_messages.each do |error| %>
-        <%= content_tag :div, error %>
-      <% end %>
-  </div>
-<% end %>
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
 
-
-
-<%= form_for(@event, html: { role: "form", class: "form-horizontal" }) do |f| %>
-
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <h3 class="panel-title">General Information</h3>
-    </div>
-    <div class="panel-body">
-
-
-      <div class="form-group">
-        <%= f.label :title, class: "control-label col-lg-2" %>
-        <div class="col-lg-10">
-          <%= f.text_field :title, class: "form-control",
-                placeholder: "Give your event a short distinct name" %>
-        </div>
-      </div>  
-
-      <div class="form-group">
-        <%= f.label :description, class: "control-label col-lg-2" %>
-        <div class="col-lg-10">
-          <%= f.text_area :description, class: "form-control",
-                placeholder: "Briefly describe your event" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :occurring_on, class: "control-label col-lg-2" %>
-        <div class="col-lg-10">
-          <%= f.date_field :occurring_on, class: "form-control",
-                placeholder: "Specify when your event will happen" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :location, class: "control-label col-lg-2" %>
-        <div class="col-lg-10">
-          <%= f.text_field :location, class: "form-control",
-                placeholder: "Set the location of your event" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :image_url, class: "control-label col-lg-2" %>
-        <div class="col-lg-10">
-          <%= f.text_field :image_url, class: "form-control",
-                placeholder: "Provide a link to an image for your event" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :slots, class: "control-label col-lg-2" %>
-        <div class="col-lg-10">
-          <%= f.text_field :slots, class: "form-control",
-                placeholder: "Set the maximum number of registrations" %>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= f.label "Visibility", class: "control-label col-lg-2" %>
-        <div class="col-lg-10">
-          <div>
-        </div>
-          <div>
-            <%= label_tag nil do %>
-              <%= f.radio_button :public, true %>
-              <strong>Public</strong>
-              &mdash; Anybody can register, and the event is publicly listed
-            <% end %>
-          </div>
-          <div>
-            <%= label_tag do %>
-              <%= f.radio_button :public, false %> 
-              <strong>Private</strong>
-              &mdash; Only invitees with a direct link to the registration page can
-                register
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <%= label_tag nil, "Status", class: "control-label col-lg-2" %>
-        <div class="col-lg-10">
-          <%= f.check_box :published %>
-          <%= f.label :published do %>
-              The event is open for registration
+    <% if @event.errors.any? %>
+      <div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Oh snap!</strong>
+          <% @event.errors.full_messages.each do |error| %>
+            <%= content_tag :div, error %>
           <% end %>
+      </div>
+    <% end %>
+
+
+
+    <%= form_for(@event, html: { role: "form", class: "form-horizontal" }) do |f| %>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">General Information</h3>
+        </div>
+        <div class="panel-body">
+
+
+          <div class="form-group">
+            <%= f.label :title, class: "control-label col-lg-2" %>
+            <div class="col-lg-10">
+              <%= f.text_field :title, class: "form-control",
+                    placeholder: "Give your event a short distinct name" %>
+            </div>
+          </div>  
+
+          <div class="form-group">
+            <%= f.label :description, class: "control-label col-lg-2" %>
+            <div class="col-lg-10">
+              <%= f.text_area :description, class: "form-control",
+                    placeholder: "Briefly describe your event" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :occurring_on, class: "control-label col-lg-2" %>
+            <div class="col-lg-10">
+              <%= f.date_field :occurring_on, class: "form-control",
+                    placeholder: "Specify when your event will happen" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :location, class: "control-label col-lg-2" %>
+            <div class="col-lg-10">
+              <%= f.text_field :location, class: "form-control",
+                    placeholder: "Set the location of your event" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :image_url, class: "control-label col-lg-2" %>
+            <div class="col-lg-10">
+              <%= f.text_field :image_url, class: "form-control",
+                    placeholder: "Provide a link to an image for your event" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :slots, class: "control-label col-lg-2" %>
+            <div class="col-lg-10">
+              <%= f.text_field :slots, class: "form-control",
+                    placeholder: "Set the maximum number of registrations" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label "Visibility", class: "control-label col-lg-2" %>
+            <div class="col-lg-10">
+              <div>
+            </div>
+              <div>
+                <%= label_tag nil do %>
+                  <%= f.radio_button :public, true %>
+                  <strong>Public</strong>
+                  &mdash; Anybody can register, and the event is publicly listed
+                <% end %>
+              </div>
+              <div>
+                <%= label_tag do %>
+                  <%= f.radio_button :public, false %> 
+                  <strong>Private</strong>
+                  &mdash; Only invitees with a direct link to the registration page can
+                    register
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag nil, "Status", class: "control-label col-lg-2" %>
+            <div class="col-lg-10">
+              <%= f.check_box :published %>
+              <%= f.label :published do %>
+                  The event is open for registration
+              <% end %>
+            </div>
+          </div>
+
         </div>
       </div>
 
-    </div>
-  </div>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Custom Form Fields</h3>
+        </div>
+        <div class="panel-body">
+          <% if @event.custom_fields.any? %>
+            <% @event.custom_fields.each_with_index do |custom_field, idx| %>
+              <%= render partial: "custom_field", 
+                    locals: { custom_field: custom_field, idx: idx } %>
+            <% end %>
+          <% else %>
+            <div class="row">
+              <div class="col-lg-offset-2 col-lg-10">
+                You can add a customized form to the registration.
+              </div>
+            </div>
+          <% end %>
 
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <h3 class="panel-title">Custom Form Fields</h3>
-    </div>
-    <div class="panel-body">
-      <% if @event.custom_fields.any? %>
-        <% @event.custom_fields.each_with_index do |custom_field, idx| %>
-          <%= render partial: "custom_field", 
-                locals: { custom_field: custom_field, idx: idx } %>
-        <% end %>
-      <% else %>
-        <div class="row">
-          <div class="col-lg-offset-2 col-lg-10">
-            You can add a customized form to the registration.
+          <div class="row">
+            <div class="col-lg-offset-2 col-lg-10">
+              <%= submit_tag :add_custom_field, value: "Add Custom Form Field", class: "btn btn-info btn-sm" %>
+            </div>
           </div>
         </div>
-      <% end %>
+      </div>
 
-      <div class="row">
-        <div class="col-lg-offset-2 col-lg-10">
-          <%= submit_tag :add_custom_field, value: "Add Custom Form Field", class: "btn btn-info btn-sm" %>
+      <%= f.submit class: "btn btn-success btn-block" %>
+    <% end %>
+
+    <% unless @event.new_record? || @event.canceled? %>
+      <div class="panel panel-danger" id="event-cancelation">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Danger Zone</strong></h3>
+        </div>
+        <div class="panel-body">
+          <p>Here you can permanently cancel the event.</p>
+            <%= link_to "Cancel event", event_path(@event), method: :delete,
+                  class: "btn btn-danger btn-block" %>
         </div>
       </div>
-    </div>
+    <% end %>
+
+
   </div>
-
-  <%= f.submit class: "btn btn-success btn-block" %>
-
-<% end %>
-
-<% unless @event.new_record? || @event.canceled? %>
-  <div class="panel panel-danger">
-    <div class="panel-heading">
-      <h3 class="panel-title"><strong>DangerZone</strong></h3>
-    </div>
-    <div class="panel-body">
-      <p>Here you can permanently cancel the event.</p>
-        <%= link_to "Cancel event", event_path(@event), method: :delete,
-              class: "btn btn-danger btn-block" %>
-    </div>
-  </div>
-<% end %>
-
+</div>
