@@ -1,9 +1,37 @@
-<div class="event">
+<div class="single-event-overview">
   <h3><%= link_to event.title, event %></h3>
-  <p>
-    <span>When: <%= event.occurring_on %></span>
-  </p>
-  <p>
-    <span>Where:<%= event.location %></span>
-  </p>
+  <div class="row">
+    <div class="col-lg-6">
+      <strong class="text-muted bold">When:</strong> <%= event.occurring_on.time.to_formatted_s(:long_ordinal) %>
+      <br>
+      <strong class="text-muted bold">Where:</strong> <%= event.location %>
+      <br>
+      <p>
+
+        <span class="label label-danger"><%= pluralize(event.finalized_registrations.count, 'registration') %></span> 
+
+      <% if event.public? %>
+        <span class="label label-info">Public</span>
+      <% else %>
+        <span class="label label-warning">Private</span>
+      <% end %>
+      <% if event.published? %>
+        <span class="label label-success">Registration Open</span>
+      <% elsif event.canceled? %>
+        <span class="label label-danger">Registration Closed</span>
+      <% else %>
+        <span class="label label-default">Inactive</span>
+      <% end %>
+
+
+      </p>
+    </div>
+  </div>
+  
+
+  <div class="event-actions">
+    <%= link_to "Event Details", event %>
+    &bull;
+    <%= link_to "Update Event", edit_event_path(event) %>
+  </div>
 </div>

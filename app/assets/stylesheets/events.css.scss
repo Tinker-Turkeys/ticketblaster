@@ -12,3 +12,17 @@
 .custom-field-divider {
   margin-bottom: 40px;
 }
+
+.single-event-overview {
+  border-left: 3px solid rgb(255, 203, 63);
+  padding-left: 20px;
+  margin-bottom: 50px;
+
+  p {
+    margin-top: 10px;
+  }
+
+  .event-actions {
+    margin-top: 15px;
+  }
+}

@@ -1,3 +1,9 @@
-<h1>My Events</h1>
+<div class="page-header">
+  <h1>
+    <span class="text-muted">
+      <%= current_user.name %>'s Events
+    </span>
+  </h1>
+</div>
 
 <%= render @events %>
