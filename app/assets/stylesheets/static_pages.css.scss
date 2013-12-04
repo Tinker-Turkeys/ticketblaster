@@ -7,16 +7,28 @@ body {
 }
 
 .jumbotron {
-  margin-top:5%;
+  margin-top:10%;
 }
 
-.welcome {
-  font-size: 5em; 
+.welcome h1{
+  font-size: 3.5em;
+  letter-spacing: -3px;
+  margin-bottom: 5%;
 }
 
 /* this should probably go somewhere more global */
 .logo {
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: -5px;
+  font-size: 1.25em;
+  background-color: #FFCB3F;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
 
+.blurb {
+  padding: 15px;
 }
 
 .btn:hover {
