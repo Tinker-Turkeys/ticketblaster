@@ -23,15 +23,22 @@
 
       <%= hidden_field_tag :token, @token %>
 
+      <hr>
+
       <% @event.custom_fields.each do |field| %>
-        <div class="register-form-group row">
+        <div class="register-form-group custom-field row">
           <%= custom_field_tag(field, @registration.custom_field_value(field.name)) %>
         </div>
       <% end %>
 
       
-        <%= f.submit "RSVP", 
-          class: "btn btn-primary col-lg-6 col-lg-offset-4" %>
+      <% if @event.custom_fields.empty? %>
+        <%= f.submit "Sign me up!", 
+          class: "rsvp btn btn-primary col-lg-6 col-lg-offset-4" %>
+      <% else %>
+        <%= f.submit "Sign me up!", 
+          class: "custom-rsvp btn btn-primary col-lg-6 col-lg-offset-1" %>
+      <% end %>
 
     <% end %>
   </div>
