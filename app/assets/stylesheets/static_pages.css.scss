@@ -85,8 +85,13 @@
 
   }
 
-  .nearly-full-event {
-    border: 4px dashed #F63D62;
+  .btn-nearly-full {
+    background-color: #F63D62;
+    border-color: #A0142F;
+  }
+
+  .btn-nearly-full:hover {
+    background-color: #A0142F;
   }
   
   .remaining-spaces-warning {
