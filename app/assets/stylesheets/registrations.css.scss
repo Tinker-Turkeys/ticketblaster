@@ -69,6 +69,7 @@
     .custom-rsvp {
       margin-top: 20px; 
       @extend .col-lg-6;
+      @extend .col-lg-offset-3;
     }
 
     .custom-field {
