@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import 'bootstrap.min';
+
 /*** New Registration Form ***/
 
   #register-form {
@@ -66,30 +68,51 @@
 
     .custom-rsvp {
       margin-top: 20px; 
-      margin-left: 11%;
+      @extend .col-lg-6;
     }
 
     .custom-field {
-      label {
-        padding-left: 10.5%;
+      padding-bottom: 30px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+      & > label {
+        @extend .col-lg-10;
+        @extend .col-lg-offset-1;
       }
 
+      .form-group > label {
+        /* text field label */
+        @extend .col-lg-10;
+        @extend .col-lg-offset-1;
+      }
+
+      & > div > label {
+        /*@extend .col-lg-2;*/
+        @extend .col-lg-6;
+        @extend .col-lg-offset-4;
+        /*&:first {
+          @extend .col-lg-offset-1;
+        }*/
+      } 
+
       input[type="text"] {
-        width: 50%;
-        margin-left: 10%;
+        @extend .col-lg-6;
+        @extend .col-lg-offset-4;
       }
 
       select {
-        width: 50%;
-        margin-left: 10%;
+        @extend .col-lg-6;
+        @extend .col-lg-offset-4;
       }
 
       input[type="checkbox"] { 
-        margin-right: 10px;
+       /* @extend .col-lg-4;*/
+        margin: 10px;
       }
 
       input[type="radio"] {
-        margin-right: 10px; 
+        /*@extend .col-lg-6; */
+        margin: 10px;
       }
 
     }

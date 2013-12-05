@@ -27,10 +27,12 @@ module RegistrationsHelper
   def custom_radio_button_tag(custom_field, value)
     label_tag(nil, custom_field.label) +
     custom_field.options_list.map do |option|
-      label_tag nil do
-        radio_button_tag(custom_field.name_attr, option, 
-          (value || custom_field.value.split(',')).include?(option)) + 
-        option
+      content_tag :div do
+        label_tag nil do
+          radio_button_tag(custom_field.name_attr, option, 
+            (value || custom_field.value.split(',')).include?(option)) + 
+          option
+        end
       end
     end.join("").html_safe
   end
@@ -38,9 +40,11 @@ module RegistrationsHelper
   def custom_check_box_tag(custom_field, value)
     label_tag(nil, custom_field.label) +
     custom_field.options_list.map do |option|
-      label_tag nil do
-        check_box_tag(custom_field.name_attr, option,
-          (value || custom_field.value.split(',')).include?(option)) + option
+      content_tag :div do
+        label_tag nil do
+          check_box_tag(custom_field.name_attr, option,
+            (value || custom_field.value.split(',')).include?(option)) + option
+        end
       end
     end.join("").html_safe
   end
