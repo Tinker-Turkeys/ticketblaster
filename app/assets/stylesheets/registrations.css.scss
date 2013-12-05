@@ -4,8 +4,55 @@
 
 /*** New Registration Form ***/
 
-#new_registration {
-  
+  #register-form {
+    border: 6px solid #FFCB3F;
+    padding: 30px;
+    margin-top: 3%;
+    border-radius: 20px;
+
+    .form-header {
+      margin-bottom: 30px;
+
+      .form-event-title {
+        font-weight: 500;
+        letter-spacing: -2px;
+        font-size: 1.2em;
+      }
+
+      h1 {
+        border-bottom: 4px dashed #F63D62;
+        padding-bottom: 20px;
+      }
+    }
+
+    .form-body{
+      .register-form-group{
+        margin: 10px;
+
+        label {
+          font-size: 1.25em;
+          margin-top: auto;
+        }
+      }
+
+    .btn, .btn-block a {
+      color: white;
+    }
+
+    .btn, .btn-block a:hover{
+      text-decoration: none;
+    }
+
+    .btn-primary, .btn-block {
+      background-color: #34C6CD;
+      border-color: #44969A;
+    }
+
+    .btn-primary:hover, .btn-block:hover {
+      background-color: #44969A;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    }
+  }
 }
 
 /***    **    **     **    ***/

@@ -1,20 +1,38 @@
-<h1>Register for <%= @event.title %></h1>
+<div id="register-form" class="col-lg-10 col-lg-offset-1">
+  <div class="form-header col-lg-10 col-lg-offset-1">
+    <h1>Register for <span class="form-event-title"><%= @event.title %></span></h1>
+  </div>
 
-<%= form_for [@event, @registration]  do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="form-body col-lg-10 col-lg-offset-1">
+    <%= form_for [@event, @registration]  do |f| %>
+      
+      <div class="register-form-group row">
+        <%= f.label :name, class: "register-label col-lg-2 col-lg-offset-1" %>
+        <%= f.text_field :name, class: "regsiter-field col-lg-6 col-lg-offset-1" %>
+      </div>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+      <div class="register-form-group row">
+        <%= f.label :email, class: "register-label col-lg-2 col-lg-offset-1" %>
+        <%= f.text_field :email, class: "regsiter-field col-lg-6 col-lg-offset-1" %>
+      </div>
 
-  <%= f.label :phone_number %>
-  <%= f.text_field :phone_number %>
+      <div class="register-form-group row">
+        <%= f.label :phone_number, class: "register-label col-lg-2 col-lg-offset-1" %>
+        <%= f.text_field :phone_number, class: "regsiter-field col-lg-6 col-lg-offset-1" %>
+      </div>
 
-  <%= hidden_field_tag :token, @token %>
+      <%= hidden_field_tag :token, @token %>
 
-  <% @event.custom_fields.each do |field| %>
-    <%= custom_field_tag(field, @registration.custom_field_value(field.name)) %>
-  <% end %>
-  <%= f.submit "RSVP" %>
-<% end %>
+      <% @event.custom_fields.each do |field| %>
+        <div class="register-form-group row">
+          <%= custom_field_tag(field, @registration.custom_field_value(field.name)) %>
+        </div>
+      <% end %>
 
+      
+        <%= f.submit "RSVP", 
+          class: "btn btn-primary col-lg-6 col-lg-offset-4" %>
+
+    <% end %>
+  </div>
+</div>
