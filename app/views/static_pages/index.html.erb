@@ -39,6 +39,7 @@
           </ul>
           <%= link_to "Register Soon!", new_event_registration_path(event), 
             class: "btn btn-nearly-full btn-lg btn-block" %>
+          </div>
       <% else %>
               <h4 class="remaining-spaces">
                 <%= pluralize(event.spaces_remaining, 'Space') %> still available
